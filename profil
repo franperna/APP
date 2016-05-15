@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="stylesheet" href="general.css"/>
+		<meta charset ="utf-8"/>
+		<title>profil</title>
+</head>
+
+<?php session_start();
+?>
+<p>nom:<?php if (isset($_SESSION['nom'])){echo htmlentities($_SESSION['nom']);} ?></p>
+<br/>
+<p>prenom:<?php if (isset($_SESSION['prenom'])){echo htmlentities($_SESSION['prenom']);} ?></p>
+<br/>
+<p>date de naissance:<?php if (isset($_SESSION['age'])){echo htmlentities($_SESSION['age']);} ?></p>
+<br/>
+<p>civilite:<?php if (isset($_SESSION['civilite'])){echo htmlentities($_SESSION['civilite']);} ?></p>
+<br/>
+<p>mail:<?php if (isset($_SESSION['mail'])){echo htmlentities($_SESSION['mail']);} ?></p>
+<br/>
+<p>description:<?php if (isset($_SESSION['description'])){echo htmlentities($_SESSION['description']);} ?></p>
+<br/>
+
+<a href = modification.php id ="modification">Modifier votre profil</a>
+
+
+
+
+
+
+
+</html>
