@@ -8,6 +8,33 @@
 
 <?php session_start();
 ?>
+
+<?php
+
+try
+{
+	$bdd = new PDO('mysql:host=localhost;dbname=le_site_du_sport;charset=utf8', 'root', '');
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
+
+	 
+		
+			$req = $bdd->prepare('SELECT photo FROM utilisateur WHERE mail = ? ');
+			$req->execute(array(
+			$_SESSION['mail']));
+						//print_r ($req['id']);
+						//var_dump $req;
+						//die();
+			$resul= $req->fetch();
+			
+			echo $resul['photo'];
+    if (!empty($resul['photo'])){ ?>
+      <img src="IMG/avatar/<?php echo $resul['photo'];?>" alt="avatar" width="150" />
+    <?php
+    } ?>
 <p>nom:<?php if (isset($_SESSION['nom'])){echo htmlentities($_SESSION['nom']);} ?></p>
 <br/>
 <p>prenom:<?php if (isset($_SESSION['prenom'])){echo htmlentities($_SESSION['prenom']);} ?></p>
