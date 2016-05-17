@@ -10,7 +10,7 @@
 </head>
 
 
-<form method ="post" >
+<form method="post"  enctype="multipart/form-data">
 <section>
 <article>
        <legend>modification</legend>
@@ -46,12 +46,11 @@
 <br/>
 
 
-<br/>
+
 <label for="photo">Photo :</label>
-<input type="file" name="logo"/>
+<input type="file" name="avatar"/>
 <input type="hidden" name="MAX_FILE_SIZE" value="100000">
 <br/>
-
 <br/>
 <label for="description"> Description </label><br/>
 <textarea type="text" name="description" value="<?php if (isset($_SESSION['description'])){echo htmlentities($_SESSION['description']);} ?>"id="description"></textarea>
@@ -152,6 +151,48 @@ catch (Exception $e)
 					$_SESSION['age'] = $_POST['birthday'];
 		          echo "vos information personnelles ont bien été modifiées";
 		} 
+		
+		//photo
+		$req = $bdd->prepare('SELECT id FROM utilisateur WHERE mail = ? ');
+			$req->execute(array(
+			$_SESSION['mail']));
+						//print_r ($req['id']);
+						//var_dump $req;
+						//die();
+			$resul= $req->fetch();
+							
+			var_dump($resul['id']);
+						
+	
+		if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])){
+		$taillemax=2097152;
+		$extensionsvalides=array('jpg','jpeg','gif','png');
+		if($_FILES['avatar']['size'] <= $taillemax){
+		$extensionupload = strtolower(substr(strrchr($_FILES['avatar']['name'],'.'),1)); // check si tout minuscule et l'extension
+			if(in_array($extensionupload, $extensionsvalides)){
+			$chemin = "IMG/avatar/".$resul['id'].".".$extensionupload;
+			$resultat = move_uploaded_file($_FILES['avatar']['tmp_name'],$chemin); //stockage temporaire
+			if($resultat){
+			$req = $bdd->prepare('UPDATE utilisateur SET photo = :avatar WHERE id = :idutilisateur');
+           $req-> execute(array(
+             'avatar' => $resul['id'].".".$extensionupload,
+             'idutilisateur' => $resul['id']
+           ));
+           
+         }
+         else{
+           $msg = "Erreur lors de l'importation de la photo de profil...";
+         }
+       }
+       else{
+         $msg = "Votre photo de profil doit être au format indiqué !";
+       }
+     }
+     else{
+       $msg = "Votre photo de profil ne doit pas dépasser 2 Mo !";
+     }
+   }
+	
 		if(!empty($_POST['description']))
 		{ htmlentities($description = $_POST['description']);
 			$req = $bdd->prepare('SELECT id FROM utilisateur WHERE mail = ? ');
@@ -169,5 +210,10 @@ catch (Exception $e)
 					$_SESSION['description'] = $_POST['description'];
 		          echo "vos information personnelles ont bien été modifiées";
 		}
+		header('location: profil.php');
 	}	
+	
 ?>
+
+
+</html>
