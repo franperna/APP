@@ -98,7 +98,7 @@ catch (Exception $e)
 	  // filter_var permet de verifier la validité de l'email
       else {
           if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-              $sql = $bdd->prepare('SELECT mail FROM utilisateur WHERE mail = \'' . $mail . '\';');
+               $sql = $bdd->prepare('SELECT mail FROM utilisateur WHERE mail = \'' . $mail . '\';');
               $sql->execute(array('.$mail.' => $_POST['mail']));
               $res = $sql->fetch();
               if ($res) {
