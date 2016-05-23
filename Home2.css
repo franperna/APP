@@ -1,0 +1,61 @@
+
+
+#bloc_page
+{
+    width: 700px;
+    margin: auto;
+}
+
+header{
+    position:absolute;
+    height:150px;
+    width:100%;
+    border:5px black groove;
+    background-size: 100%;
+    box-shadow: 5px 5px 5px black;
+}
+header h1{
+position:absolute;
+padding-left:600px;
+width:30%;
+height:5%;
+}
+
+nav{
+position:absolute;
+display: flex;
+flex-direction:row;
+justify-content:space-around;
+padding-top:100px;
+padding-left:200px;
+height:50px;
+width:80%;    
+}
+#conex{
+position:absolute;
+display: flex;
+flex-direction:row;
+padding-left:800px;
+height:50px;
+width:10%; 
+
+}
+#logo{
+position:absolute;
+width: 150px;
+height:150px;
+}
+section{
+    position:absolute;
+    height:500px;
+    width:80%;
+    margin-top:200px;
+
+}
+footer{
+    position:absolute;
+    height:200px;
+    width:100%;
+    margin:700px;
+
+}

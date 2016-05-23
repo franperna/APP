@@ -1,0 +1,456 @@
+body{
+    background-color: white;
+    color:black;
+
+}
+
+#bloc_page{
+    position: absolute;
+    left:0px;
+    top:0px;
+    width:1305px;
+    height:1510px;
+}
+
+header{
+    position: absolute;
+    left:0px;
+    top: 0px;
+    width: 1360px;
+    height: 380px;
+    border:5px black groove;
+    box-shadow: 5px 5px 5px black;
+    background-color: #C1E2B6;
+    z-index: 3
+    
+}
+
+
+#logo{
+    position: absolute;
+    left: 27px;
+    top:9px;
+    width:207px;
+    height:189px;
+}
+
+header h1{
+    position: absolute;
+    left:570px;
+    top:20px;
+    width:500px;
+    height:100px;
+    font-size: 3em;
+    font-style:oblique;
+    font-family: cursive;
+}
+
+nav{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;
+    position:absolute;
+    left:175px;
+    top:212px;
+    width:920px;
+    height:38px;
+    padding-left: 100px
+    
+}
+
+#Directory{
+
+    width:70px;
+    height:16px;
+    font-size: 0.85em;
+    border:2px black groove;
+    border-radius: 5px;
+    padding: 10px;
+    color:black;
+    text-align: center;
+}
+
+#Home{
+
+    width:70px;
+    height:16px;
+    font-size: 0.85em;
+    border:2px black groove;
+    border-radius: 5px;
+    padding:10px;
+    background-color: beige;
+    text-align: center;
+
+}
+
+#Group{
+
+    width:70px;
+    height:16px;
+    font-size: 0.85em;
+    border:2px black groove;
+    border-radius: 5px;
+    padding:10px;
+    background-color: beige;
+    text-align: center;
+
+}
+
+#Forums{
+
+    width:70px;
+    height:16px;
+    font-size: 0.85em;
+    border:2px black groove;
+    border-radius:5px;
+    padding:10px;
+    background-color: beige;
+    text-align: center;
+
+}
+
+#Help{
+
+    width:70px;
+    height:16px;
+    font-size: 0.85em;
+    border:2px black groove;
+    border-radius:5px;
+    padding:10px;
+    background-color: beige;
+    text-align: center;
+}
+
+section{
+    position: absolute;
+    left:0px;
+    top:335px;
+    width:1360px;
+    height:1500px;
+    border:5px black groove;
+    box-shadow: 5px 5px 5px black;
+    background-color: #C1E2B6;
+    z-index: 1
+}
+
+#life{
+
+    position: absolute;
+    left:0px;
+    top:50px;
+    width:1360px;
+    height:300px;
+
+}
+
+
+
+article {
+    position: absolute;
+    left: 5px;
+    top:400px;
+    width:411px;
+    height:932px;
+    
+}
+
+#directory {
+
+    position: absolute;
+    left: 70px;
+    top:50px;
+    width:500px;
+    height:263px;
+    font-size: 0.85em;
+    padding-left:5px;
+    padding-top: 50px;
+    z-index: 2
+}
+ 
+ #Search{
+
+  position: absolute;
+    left: 10px;
+    top:0px;
+    width:200px;
+    height:44px;
+    font-size: 1.5em;
+    font-weight: none;
+    text-decoration: underline;
+
+ }
+
+#choose{
+
+    position: absolute;
+    left: 70px;
+    top:70px;
+
+}
+
+ #Map{
+
+  position: absolute;
+    left: 85px;
+    top:350px;
+    width:200px;
+    height:44px;
+    font-size: 1.5em;
+    font-weight: none;
+    text-decoration: underline;
+
+ }
+
+ #map{
+
+    position: absolute;
+    left: 85px;
+    top:450px;
+    width:450px;
+    height:300px;
+
+ }
+
+
+
+
+aside{  position: absolute;
+    left:877px;
+    top:400px;
+    width:495px;
+    height:932px;
+    
+   
+}
+
+#inscription{
+    position: absolute;
+    left:200px;
+    top: 10px;
+    width:70px;
+    height:16px;
+    font-size: 0.85em;
+    border:2px black groove;
+    padding:5px;
+    background-color: rgba(0,102,0,0.6);
+    color:white;
+    box-shadow: 2px 2px 2px black;
+
+}
+
+#acces{
+    position: absolute;
+    left:100px;
+    top:50px;
+    width:280px;
+    height:70px;
+    font-size: 0.85em;
+    border:2px black groove;
+    box-shadow: 2px 2px 2px black;
+    padding: 5px;
+    background-color: rgba(0,102,0,0.6);
+    color:white;
+}
+
+#pseudo{
+    position: absolute;
+    right:50px;
+    top:19px;
+    width:140px;
+    height:17px;
+    border:2px black groove;
+    box-shadow: 1px 1px 1px black;
+}
+
+#pass{
+    position: absolute;
+    right:50px;
+    top:54px;
+    width:140px;
+    height:17px;
+    border:2px black groove;
+    box-shadow: 1px 1px 1px black;
+}
+
+#conex{
+    position: absolute;
+    right:1px;
+    top:60px;
+    width:30px;
+    height:20px;
+    border:2px black groove;
+    box-shadow: 1px 1px 1px black;
+}
+#oubli{
+    position: absolute;
+    left:150px;
+    top:150px;
+    width:350px;
+    height:50px;
+
+}
+
+#calendrier{
+    position: absolute;
+    left:145px;
+    top:200px;
+    width:145px;
+    height:285px;
+}
+
+#InlineFrame1{
+
+    position: absolute;
+    left:0px;
+    top:0px;
+    width:120px;
+    height:161px;
+
+}
+
+#facebook{
+    position: absolute;
+    left:17px;
+    top:200px;
+    width:40px;
+    height:40px;
+
+}
+
+#twitter{
+     position: absolute;
+    left:67px;
+    top:200px;
+    width:40px;
+    height:40px;
+   
+}
+
+#gmail{
+     position: absolute;
+    left:117px;
+    top:200px;
+    width:40px;
+    height:40px;
+  
+
+}
+
+
+aside h2{
+
+    font-size: 0.85em;
+    text-align: center;
+}
+
+
+
+footer{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-end; 
+    align-items: flex-end; 
+    position: absolute;
+    left: 275px;
+    top: 1475px;
+    width:945px;
+    height: 80px;
+    z-index: 2
+   
+}
+#france{
+    position: absolute;
+    left: 860px;
+    top:0px;
+    width:60px;
+    height:28px;
+
+}
+
+#amerique{
+    position: absolute;
+    left: 945px;
+    top:0px;
+    width:60px;
+    height:28px;
+
+}
+
+a:link{
+    color:blue;
+}
+a:visited{
+    color:#6A388B;
+}
+a:hover{
+    color:red;
+}
+
+
+#Home:hover{
+    margin: 2px;
+    width:61px;
+    height:14px;
+    font-size: 0.74em;
+    border:1.75px black groove;
+    border-radius:5px;
+    padding:8.3px;
+    background-color: beige;
+    text-align: center;
+    transition: all .2s;
+
+}
+#Group:hover{
+    margin: 2px;
+    width:61px;
+    height:14px;
+    font-size: 0.74em;
+    border:1.75px black groove;
+    border-radius:5px;
+    padding:8.3px;
+    background-color: beige;
+    text-align: center;
+    transition: all .2s;
+
+
+}
+#Forums:hover{
+    margin: 2px;
+    width:61px;
+    height:14px;
+    font-size: 0.74em;
+    border:1.75px black groove;
+    border-radius:5px;
+    padding:8.3px;
+    background-color: beige;
+    text-align: center;
+    transition: all .2s;
+
+
+}
+#Help:hover{
+    margin: 2px;
+    width:61px;
+    height:14px;
+    font-size: 0.74em;
+    border:1.75px black groove;
+    border-radius:5px;
+    padding:8.3px;
+    background-color: beige;
+    text-align: center;
+    transition: all .2s;
+}
+
+#inscription:hover{
+    margin:2px;
+    width:61px;
+    height:14px;
+    font-size: 0.74em;
+    border:1.75px black groove;
+    padding:3.75px;
+    background-color: rgba(0,102,0,0.6);
+    color:white;
+    box-shadow: 1px 1px 1px black;
+    transition: all .2s;
+
+}
