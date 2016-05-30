@@ -14,7 +14,7 @@
     <a href="logo.php"><img class="imageconnexion" src="logo3.jpg" alt="" /></a>
 </div>
 </div>
-<br>
+</br>
 
 <div id="co1">
 	<a class="boutton" href="Inscription.html"> S'inscrire  </a></li> 
@@ -36,5 +36,12 @@
 <p> Nouveauté </p>
 
 </section>
+<footer>
+</br>
+<a href="https://www.facebook.com/"> <img  src="0facebook-miniature.jpg" alt="Photo de facebook" title="Facebook"/> </a>
+<a href="https://www.twitter.com/"> <img src="Twitter_logo.png" alt="Photo de twitter" title="Twitter"/> </a>
+<p>qui sommes-nous ? mention légale  condition d'utilisation</p>
+
+</footer>
  
 </body>

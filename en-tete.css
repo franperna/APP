@@ -3,9 +3,6 @@ html, body {
     width: 100%;
     margin: 0; padding: 0;
 }
-#container{
-	
-}
 body{
 	display : table;
 	min-height: 100%;
@@ -53,9 +50,9 @@ body{
 	z-index: 3;
 }
 section{
-	position: relative;
-    left: 125px;
-    top:250px;
+	
+    margin-left: 125px;
+    margin-top:250px;
     width:400px;
     height:700px;
     border:5px black groove;
@@ -69,7 +66,6 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    
     background-color: #404040;
 	text-align: center; /* centrer le texte */
 	
@@ -118,3 +114,12 @@ li a.active {
     color: white;
     background-color: #FFFFFF;
 }
+footer{
+	height: 115px;
+	color: white;
+	background-color: #404040;
+	width: 100%;
+	z-index: 3;
+	
+}
+
