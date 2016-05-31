@@ -198,9 +198,10 @@ catch (Exception $e)
 					}
                       echo "Bonjour $prenom votre compte a bien été modifié";
 					   session_start();
-					   $donnees = $req->fetch()
+					   $req = $bdd->query('SELECT id From utilisateur WHERE nom=\''.$nom.'\'');
+						$donnees = $req->fetch();
 					   
-						$_SESSION['id] =$donnees['id'];
+						$_SESSION['id'] =$donnees['id'];
 						$_SESSION['nom'] = $_POST['nom'];
 						$_SESSION['prenom'] = $_POST['prenom'];
 						$_SESSION['mot_de_passe'] = $_POST['mot_de_passe'];
