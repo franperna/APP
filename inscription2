@@ -121,7 +121,10 @@ catch (Exception $e)
                       //affiche un mot gentil, dans le futur on doit changer pour que ceci apparaisse sur une autre.nom,prenom,mail,mot_de_passe,age,civilite,pseudo
                       echo "Bonjour $prenom votre compte est bien enregistré";
 					   session_start();
-						
+						 $req = $bdd->query('SELECT id From utilisateur WHERE nom=\''.$nom.'\'');
+						$donnees = $req->fetch();
+					   
+						$_SESSION['id'] =$donnees['id'];
 						$_SESSION['nom'] = $_POST['nom'];
 						$_SESSION['prenom'] = $_POST['prenom'];
 						$_SESSION['mot_de_passe'] = $_POST['mot_de_passe'];
