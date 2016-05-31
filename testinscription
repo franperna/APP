@@ -10,7 +10,7 @@
 </head>
 
 
-<form method ="post" >
+<form method="post"  enctype="multipart/form-data">
 <section>
 <article>
        <legend>Inscription</legend>
@@ -55,8 +55,8 @@ Sexe :
 
 
 <br/>
-<label for="phone">Numero de telephone :</label>
-<input type ="tel" name="phone"  value="<?php if (isset($_POST['phone'])){echo htmlentities($_POST['phone']);} ?>"placeholder="06.."/>
+<label for="ville">ville :</label>
+<input type ="text" name="ville"  value="<?php if (isset($_POST['ville'])){echo htmlentities($_POST['ville']);} ?>"/>
 <br/>
 <br/>
 <label for="email1">Email :</label>
@@ -70,7 +70,7 @@ Sexe :
 <br/>
 <br/>
 <label for="photo">Photo :</label>
-<input type="file" name="logo"/>
+<input type="file" name="avatar"/>
 <input type="hidden" name="MAX_FILE_SIZE" value="100000">
 <br/>
 
@@ -92,6 +92,7 @@ Sexe :
 </p>
 
 </form>
+</article>
 <?php
 try
 {
@@ -115,7 +116,7 @@ catch (Exception $e)
         htmlentities($prenom = $_POST['prenom']);
         htmlentities($nom = $_POST['nom']);
         htmlentities($birthday = $_POST['birthday']);
-
+		htmlentities($ville = $_POST['ville']);
         //htmlentities($user_post_office_box = $_POST['user_post_office_box']);
        // htmlentities($city = $_POST['city']);
         htmlentities($Regle=$_POST['Regle']);
@@ -123,9 +124,9 @@ catch (Exception $e)
 
         // empecher les codes php dans la base
       // Je verifie que TOUT les champs sont remplis.
-      if(empty($mot_de_passe)||empty($mail)|| empty($Regle)|| empty($prenom) || empty($prenom) || empty($birthday )  || empty($mail)|| empty($description) )
+      if(empty($mot_de_passe)||empty($mail)|| empty($Regle) || empty($prenom)|| empty($mail) )
       {
-                    echo "Vous devez remplir tout les formulaire";
+                    echo "Vous devez remplir tout les formulaires";
                       //echo '<script type="text/javascript">window.alert("'.$message0.'"); window.location.href="testinscription.php";</script>';
       }
 	  // filter_var permet de verifier la validité de l'email
@@ -151,7 +152,7 @@ catch (Exception $e)
 						var_dump($resul['id']);
 						
 						
-					$reponse = $bdd->query('UPDATE  utilisateur SET nom=\''.$nom.'\', prenom=\''.$prenom.'\', mail=\''.$mail.'\',mot_de_passe=\''.$pass_hache.'\',age=\''.$birthday.'\',description=\''.$description.'\', civilite=\''.$civilite.'\' WHERE id=\''.$resul['id'].'\'');
+					$reponse = $bdd->query('UPDATE  utilisateur SET nom=\''.$nom.'\', prenom=\''.$prenom.'\', mail=\''.$mail.'\',mot_de_passe=\''.$pass_hache.'\',age=\''.$birthday.'\',description=\''.$description.'\', civilite=\''.$civilite.'\',ville=\''.$ville.'\' WHERE id=\''.$resul['id'].'\'');
 					  /*$req = $bdd->prepare('INSERT INTO utilisateur (nom,prenom,mail,mot_de_passe,age,civilite,pseudo) VALUES(?,?,?,?,?,?,?)');
 						$req->execute(array(
 						$nom,
@@ -164,16 +165,59 @@ catch (Exception $e)
 					));*/
 						
                       //affiche un mot gentil, dans le futur on doit changer pour que ceci apparaisse sur une autre.nom,prenom,mail,mot_de_passe,age,civilite,pseudo
-                      $message = "Bonjour $prenom votre compte est bien enregistré";
-                      echo '<script type="text/javascript">window.alert("' . $message . '"); window.location.href="testinscription.php";</script>';
+					
+						
+	
+					if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])){
+					$taillemax=2097152;
+						$extensionsvalides=array('jpg','jpeg','gif','png');
+					if($_FILES['avatar']['size'] <= $taillemax){
+					$extensionupload = strtolower(substr(strrchr($_FILES['avatar']['name'],'.'),1)); // check si tout minuscule et l'extension
+						if(in_array($extensionupload, $extensionsvalides)){
+							$chemin = "IMG/avatar/".$resul['id'].".".$extensionupload;
+							$resultat = move_uploaded_file($_FILES['avatar']['tmp_name'],$chemin); //stockage temporaire
+							if($resultat){
+								$req = $bdd->prepare('UPDATE utilisateur SET photo = :avatar WHERE id = :idutilisateur');
+								$req-> execute(array(
+								'avatar' => $resul['id'].".".$extensionupload,
+								'idutilisateur' => $resul['id']
+								));
+           
+							}
+								else{
+									$msg = "Erreur lors de l'importation de la photo de profil...";
+								}
+							}
+								else{
+									$msg = "Votre photo de profil doit être au format indiqué !";
+								}
+					}
+						else{
+							$msg = "Votre photo de profil ne doit pas dépasser 2 Mo !";
+						}
+					}
+                      echo "Bonjour $prenom votre compte a bien été modifié";
+					   session_start();
+					   $donnees = $req->fetch()
+					   
+						$_SESSION['id] =$donnees['id'];
+						$_SESSION['nom'] = $_POST['nom'];
+						$_SESSION['prenom'] = $_POST['prenom'];
+						$_SESSION['mot_de_passe'] = $_POST['mot_de_passe'];
+						$_SESSION['mail'] = $_POST['mail'];
+						$_SESSION['age']=$_POST['birthday'];
+						$_SESSION['description']=$_POST['description'];
+						$_SESSION['civilite']=$_POST['civilite'];
+						header('location: profil.php');
+                      //echo '<script type="text/javascript">window.alert("' . $message . '"); window.location.href="testinscription.php";</script>';
                   } else {
-                      $message1 = "Les deux mots de passe ou les deux e-mails que vous avez rentrés ne correspondent pas";
-                      echo '<script type="text/javascript">window.alert("' . $message1 . '"); window.location.href="testinscription.php";</script>';
+                      echo "Les deux mots de passe ou les deux e-mails que vous avez rentrés ne correspondent pas";
+                      //echo '<script type="text/javascript">window.alert("' . $message1 . '"); window.location.href="testinscription.php";</script>';
                   }
               /*}*/
           } else {
-              $message2 = "Votre email n\'est pas valide";
-              echo '<script type="text/javascript">window.alert("' . $message2 . '"); //window.location.href="testinscription.php";</script>';
+             echo "Votre email n\'est pas valide";
+              //echo '<script type="text/javascript">window.alert("' . $message2 . '"); //window.location.href="testinscription.php";</script>';
           }
       }
     }
@@ -182,7 +226,7 @@ catch (Exception $e)
 </table>
 </div>
 
-</article>
+
 </section>
 
 </body>
