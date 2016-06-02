@@ -98,10 +98,27 @@ if(isset ($_GET['trouver']) || isset($_POST['Bannir']) || isset($_POST['supprime
 		
 	}
 	elseif (isset($_POST['supprimer'])) {
-		$req=$bdd->query('DELETE FROM utilisateur WHERE mail=\''.$data['mail'].'\'');
+	htmlentities($mail1 = $_POST['mail']);
+		$req3=$bdd->query('SELECT id FROM utilisateur WHERE mail=\''.$mail1.'\'');
+		$data1= $req3->fetch();
+		echo $data1['id'] ;
+		$req4=$bdd->query('SELECT id_utilisateur FROM groupe');
+		while ($data2 = $req4->fetch()){
+			
+			if ($data1['id']==$data2['id_utilisateur']){
+				
+				$req5=$bdd->query('DELETE FROM groupe WHERE id_utilisateur=\''.$data2['id_utilisateur'].'\'');
+			}else{
+				echo 'ça marche pas';
+			}
+			
+		}
 		
-		echo'\''.$data['mail'].'\'';
-		echo'utilisateur supprimé';
+		 $req3=$bdd->query('DELETE FROM utilisateur WHERE mail=\''.$mail1.'\'');
+		
+		echo'\''.$mail1.'\'';
+		echo'utilisateur supprimé ';
+	
 	}
 	
 }	
