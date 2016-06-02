@@ -49,14 +49,13 @@ if (isset($_POST['supprimer'])){
 	
 	$id=$_POST['id'];
 	
-		echo'\''.$id .'\'';
-		$req2=$bdd->prepare('DELETE FROM groupe WHERE id=?');
-		//$req2->bindValue(':id', $idbis[$e], PDO::PARAM_STR);
-		$req2->execute(array(
-		$id
-		));
 		
-		echo'\''.$nomgroupe .'\'';
+		
+		$req5=$bdd->query('DELETE FROM groupe WHERE id=\''.$id.'\'');
+		
+		
+		
+		
 	
 }
 

@@ -37,9 +37,9 @@
 
 <div id="form1">
 <form method="post" >
-
+<p> Ajouter un question à votre FAQ </p>
 <label for="question">question :</label>
-<input type="text" name="question" id="question" />
+<input type="text" name="question" id="question" style="width:300px" />
 </br>
 <label for="reponse">reponse :</label> <P>
 
@@ -80,13 +80,8 @@ if (isset($_POST['soumettre'])){
 
 }
 
-?>
-<form method ="get">
-<p> voir la FAQ</p>
-<input type="submit" name="voir" value="voir"/>
- </form>
- <?php 
- if( isset ($_GET['voir']) || isset ($_POST['modifier'])){
+
+
 	
 	$req3=$bdd->query('SELECT * from faq');
 	echo 'FAQ';
@@ -94,7 +89,7 @@ if (isset($_POST['soumettre'])){
 		while ($donnee= $req3->fetch()){
 		
 					echo'<p><strong>'. htmlspecialchars($donnee['question']) . '</strong> :   </p>';             
-					echo'<p><strong>'. htmlspecialchars($donnee['reponse']) . '</strong>    </p>'; 
+					echo'<p>'. htmlspecialchars($donnee['reponse']) . '</p>'; 
 									
 		}?>
 		<form method="post" action="faqmodif.php"   >
@@ -105,9 +100,7 @@ if (isset($_POST['soumettre'])){
 								<br>
 						
 					</form>
-<?php
-	}
- ?>
+
   </div>
 </body>
 </html>

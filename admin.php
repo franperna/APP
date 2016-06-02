@@ -36,7 +36,8 @@
 
 <div id="form1">
 utilisateur :
-<p> un utilisateur banni a ses privilèges à 3<p>
+<p> Un utilisateur banni a ses privilèges à 3<p>
+<p> Si un utilisateur est leader d'un groupe alors  a ses privilèges à 3<p>
 <form method="get" action="listeutilisateur.php" >
 
 <label for="nom">Nom :</label>
@@ -78,10 +79,25 @@ if (isset($_POST['Bannir']) && isset($_POST['mail'])) {
 	
 	elseif (isset($_POST['supprimer'])&& isset($_POST['mail'])) {
 		htmlentities($mail1 = $_POST['mail']);
-		$req3=$bdd->query('DELETE FROM utilisateur WHERE mail=\''.$mail1.'\'');
+		$req3=$bdd->query('SELECT id FROM utilisateur WHERE mail=\''.$mail1.'\'');
+		$data1= $req3->fetch();
+		echo $data1['id'] ;
+		$req4=$bdd->query('SELECT id_utilisateur FROM groupe');
+		while ($data2 = $req4->fetch()){
+			
+			if ($data1['id']==$data2['id_utilisateur']){
+				
+				$req5=$bdd->query('DELETE FROM groupe WHERE id_utilisateur=\''.$data2['id_utilisateur'].'\'');
+			}else{
+				echo 'ça marche pas';
+			}
+			
+		}
+		
+		 $req3=$bdd->query('DELETE FROM utilisateur WHERE mail=\''.$mail1.'\'');
 		
 		echo'\''.$mail1.'\'';
-		echo'utilisateur supprimé';
+		echo'utilisateur supprimé ';
 		// $req3->closeCursor();
 	}
 	
